@@ -8,7 +8,7 @@ const CommentList = ({ commentsToShow }) => (
         {
             commentsToShow.map(comment => (
                 
-                <Singlecomment comment={comment}  />
+                <Singlecomment comment={comment} key={comment._id} />
             ))
         }
     </ListGroup>
