@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import {Card,CardGroup} from 'react-bootstrap'
+import CommentArea from './CommentArea'
 
 class Singlebooks extends Component{
   state={
@@ -11,9 +12,9 @@ class Singlebooks extends Component{
     return(
        
         
+    <>
     
-    
-    <CardGroup key={this.props.book.asin}>
+    <CardGroup key={this.props.book.asin}  >
   <Card onClick={()=>this.setState({selected: !this.state.selected})}
   style={{border: this.state.selected? '3px solid red' :'none'}}
   >
@@ -28,16 +29,17 @@ class Singlebooks extends Component{
       <small className="text-muted">Last updated 3 mins ago</small>
     </Card.Footer>
   </Card>
+ 
   
   
 </CardGroup>
     
   
-    
+{ this.state.selected? <CommentArea asin={this.props.book.asin}/> :null}
 
 
 
-
+</>
 
 
 )}

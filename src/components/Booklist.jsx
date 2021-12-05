@@ -33,8 +33,8 @@ class Booklist extends Component{
                     {
         
                         this.props.bookpage.filter(bk=>bk.title.toLowerCase().includes(this.state.searchQuery)).map(bk =>(
-                            <Col xs={3}>
-                            <Singlebooks book={bk}/>
+                            <Col xs={3} key={bk.asin} >
+                            <Singlebooks book={bk} />
                             </Col>
                            
 
