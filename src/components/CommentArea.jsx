@@ -1,11 +1,12 @@
 import { Component } from 'react'
 import CommentList from './CommentList'
+import AddComments from './AddComments'
 
 
 class CommentArea extends Component {
 
     state = {
-        comments: [], // comments will go here
+        comments: [],
         
     }
 
@@ -35,6 +36,7 @@ class CommentArea extends Component {
             <div>
                
                 <CommentList commentsToShow={this.state.comments} />
+                <AddComments />
             </div>
         )
     }
