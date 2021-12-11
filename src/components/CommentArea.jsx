@@ -2,11 +2,15 @@ import { Component } from 'react'
 import CommentList from './CommentList'
 import AddComments from './AddComments'
 
+import Error from './Error'
+import Loading from './Loading'
 
 class CommentArea extends Component {
 
     state = {
         comments: [],
+        Isloading:true,
+        IsError:false
         
     }
 
@@ -20,10 +24,10 @@ class CommentArea extends Component {
             console.log(response)
             if (response.ok) {
                 let comments = await response.json()
-                this.setState({ comments: comments })
+                this.setState({ comments: comments, Isloading:false, IsError:true})
             } else {
                 console.log('error')
-                
+                this.setState({  Isloading:false, IsError:true})
             }
         } catch (error) {
             console.log(error)
@@ -34,6 +38,8 @@ class CommentArea extends Component {
     render() {
         return (
             <div>
+                {this.state.Isloading && <Loading />}
+                {this.state.IsError && <Error />}
                
                 <CommentList commentsToShow={this.state.comments} />
                 <AddComments asin={this.props.asin}/>
