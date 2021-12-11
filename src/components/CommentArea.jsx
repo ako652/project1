@@ -10,7 +10,7 @@ class CommentArea extends Component {
     state = {
         comments: [],
         Isloading:true,
-        IsError:false
+        IsError:true
         
     }
 
@@ -24,10 +24,10 @@ class CommentArea extends Component {
             console.log(response)
             if (response.ok) {
                 let comments = await response.json()
-                this.setState({ comments: comments, Isloading:false, IsError:true})
+                this.setState({ comments: comments, Isloading:false, IsError:false})
             } else {
                 console.log('error')
-                this.setState({  Isloading:false, IsError:true})
+                this.setState({  Isloading:false, IsError:false})
             }
         } catch (error) {
             console.log(error)
